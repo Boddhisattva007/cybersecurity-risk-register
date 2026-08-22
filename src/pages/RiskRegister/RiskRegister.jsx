@@ -1,7 +1,7 @@
 
 
 
-function RiskRgister() {
+function RiskRegister() {
 
     const impact = userSelectImpact;
     const likelihood = userSelectLiklihood;
@@ -11,4 +11,4 @@ function RiskRgister() {
     return riskScore;
 }
 
-export default RiskRgister;
+export default RiskRegister;
