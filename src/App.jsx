@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Link } from 'react-router';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './Main View Pages/About/About.jsx';
@@ -15,13 +15,18 @@ function App() {
 
       <Header />
 
-      <Routes>
+      <main>
 
-        <Route path="/" element={<Home />} />
-        <Route path="/riskregister" element={<RiskRegister />} />
-        <Route path="/about" element={<About />} />
+        <Routes>
 
-      </Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/riskregister" element={<RiskRegister />} />
+          <Route path="/about" element={<About />} />
+
+        </Routes>
+
+
+      </main>
 
       <Footer />
 

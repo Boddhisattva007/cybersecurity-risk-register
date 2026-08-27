@@ -1,8 +1,10 @@
-
+import RiskForm from "../../components/RiskForm/RiskForm.jsx";
 function RiskRegister() {
 
     return (
-        <p>Risk Register Page</p>
+        // <p>Risk Register Page</p>
+
+        <p><RiskForm /></p>
     );
 
     // const impact = userSelectImpact;
