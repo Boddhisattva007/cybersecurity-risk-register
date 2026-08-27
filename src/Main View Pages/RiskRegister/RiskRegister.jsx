@@ -2,7 +2,7 @@
 function RiskRegister() {
 
     return (
-        <p>Stuff Goes Here</p>
+        <p>Risk Register Page</p>
     );
 
     // const impact = userSelectImpact;

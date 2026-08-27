@@ -13,17 +13,13 @@ function App() {
 
     <div className="App">
 
-      <h1>CyberSecurity Risk Register</h1>
-
       <Header />
-
-      <RiskRegister />
 
       <Routes>
 
         <Route path="/" element={<Home />} />
-        <Route path="/RiskRegister" element={<RiskRegister />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/riskregister" element={<RiskRegister />} />
+        <Route path="/about" element={<About />} />
 
       </Routes>
 
