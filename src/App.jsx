@@ -1,30 +1,37 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router';
+import Header from './components/Header/Header.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import About from './Main View Pages/About/About.jsx';
+import Home from './Main View Pages/Home/Home.jsx';
+import RiskRegister from './Main View Pages/RiskRegister/RiskRegister.jsx';
 import './App.css'
-import RiskRegister from './Pages/RiskRegister/RiskRegister';
 
 function App() {
 
   return (
-    <>
 
-    <body> {/* Just Getting Something On The Page */}
+    <div className="App">
 
-      <header>
-        <h1>Cybersecurity Risk Register</h1>
-      </header>
+      <h1>CyberSecurity Risk Register</h1>
 
-      <main>
-        Stuff Goes Here
-      </main>
+      <Header />
 
-      <footer>
-        Unit 1 | React Project
-      </footer>
-      
-    </body>
+      <RiskRegister />
 
-    </>
-  )
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+        <Route path="/RiskRegister" element={<RiskRegister />} />
+        <Route path="/About" element={<About />} />
+
+      </Routes>
+
+      <Footer />
+
+    </div>
+    
+  );
 }
 
 export default App;
