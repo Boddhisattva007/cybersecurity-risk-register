@@ -14,7 +14,7 @@ function riskScoreSeverity(riskScore) {
     } else if (riskScore <=16) {
         return "High";
     } else {
-        return "Critical";
+        return "CRITICAL";
     }
 }
 
