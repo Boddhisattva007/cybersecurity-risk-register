@@ -4,9 +4,9 @@ import Risk from "../classes/risk";
 //Instantiating New Risks with mock data.
 let riskOne = new Risk(
     "RISK-001",
-    "Website Password",
-    "Weak Password",
+    "Personal Website",
     "Credential Attack",
+    "Weak Password",
     "Vulnerable to account takover.",
     1,
     4,
@@ -18,8 +18,8 @@ let riskOne = new Risk(
 let riskTwo = new Risk(
     "RISK-002",
     "Laptop",
-    "Outdated OS version",
     "Malware Attack",
+    "Outdated OS version",
     "OS not updated with latest security patch.",
     3,
     3,
@@ -31,8 +31,8 @@ let riskTwo = new Risk(
 let riskThree = new Risk(
     "RISK-003",
     "Home Network",
-    "WPA",
     "Insecure Security Protocol",
+    "WPA",
     "WPA is an insecure Wi-Fi secuirty protocol.",
     5,
     5,
@@ -44,8 +44,8 @@ let riskThree = new Risk(
 let riskFour = new Risk(
     "RISK-004",
     "Home Movie Server",
-    "Outdated Server Software",
     "Remote Exploitation",
+    "Outdated Server Software",
     "Media server software missing latest security updates.",
     4,
     4,

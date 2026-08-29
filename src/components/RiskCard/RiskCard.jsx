@@ -16,8 +16,8 @@ function RiskCard({ risk }){
             {/* List items for each key/value pair associated with each risk card. */}
             <ul>
                 <li>Asset: {risk.asset}</li>
-                <li>Vulnerability: {risk.vulnerability}</li>
                 <li>Threat: {risk.threat}</li>
+                <li>Vulnerability: {risk.vulnerability}</li>
                 <li>Description: {risk.description}</li>
                 <li>Likelihood: {risk.likelihood}</li>
                 <li>Impact Score: {risk.impact}</li>
