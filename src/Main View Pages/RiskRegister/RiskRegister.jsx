@@ -11,7 +11,7 @@ function RiskRegister() {
     const [risks, setRisks] = useState(mockDataArray);
 
     // Parent that passes/returns data to:
-    // RiskForm, RiskList, RiskSummary, & RiskCard child components.
+    // RiskForm, RiskList, & RiskSummary child components.
     // Also a Child to App.jsx, eturns the Risk Register element.
     return (
 

@@ -1,4 +1,4 @@
-import RiskCard from "../RiskCard/RiskCard";
+import RiskCard from "../RiskCard/RiskCard.jsx";
 
 // RiskList Function
 function RiskList({ risks }){
