@@ -1,3 +1,5 @@
+
+// About Page Function
 function About() {
 
     return (
@@ -7,4 +9,5 @@ function About() {
     );
 }
 
+//Exporting About 
 export default About;

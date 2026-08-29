@@ -1,11 +1,14 @@
-
+// Home Page Function
 function Home() {
 
     return (
-        <p>
-            Home Page
-        </p>
+        <section>
+
+            <h1>Home Page</h1>
+
+        </section>
     );
 }
 
+//Exporting Home
 export default Home;

@@ -1,4 +1,4 @@
-
+// Risk Object Class created. 
 class Risk {
     constructor(
         riskId,
@@ -7,12 +7,12 @@ class Risk {
         threat,
         vulnerabilityDescription,
         likelihood,
-        riskImpact,
+        impact,
         mitigation,
-        riskStatus,
+        status,
         owner,
-        cveId = null,
-        cveData = null
+        cveId = null, //For v2.0
+        cveData = null //For v2.0
     ) {
         this.riskId = riskId;
         this.asset = asset;
@@ -20,14 +20,14 @@ class Risk {
         this.threat = threat;
         this.vulnerabilityDescription = vulnerabilityDescription;
         this.likelihood = likelihood;
-        this.riskImpact = riskImpact;
+        this.impact = impact;
         this.mitigation = mitigation;
-        this.riskStatus = riskStatus;
+        this.status = status;
         this.owner = owner;
-
+        //Saved for eventual use in Version 2.0 (Unit 2 Final... Maybe)
         this.cveId = cveId;
         this.cveData = cveData;
     }
 }
-
+// Exporting Risk Object Class
 export default Risk;

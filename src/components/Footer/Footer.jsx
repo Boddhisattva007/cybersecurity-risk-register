@@ -1,4 +1,4 @@
-
+//Footer Function
 function Footer() {
 
     return (
@@ -10,5 +10,5 @@ function Footer() {
 
 
 }
-
+//Exportign Footer
 export default Footer;

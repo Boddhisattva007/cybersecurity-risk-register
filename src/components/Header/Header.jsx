@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-
+//Header Function
 function Header() {
 
     return (
@@ -21,4 +21,5 @@ function Header() {
 
 }
 
+//Exporting Header
 export default Header;

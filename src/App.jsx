@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router';
+
+import { Routes, Route } from 'react-router';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './Main View Pages/About/About.jsx';
@@ -7,16 +7,18 @@ import Home from './Main View Pages/Home/Home.jsx';
 import RiskRegister from './Main View Pages/RiskRegister/RiskRegister.jsx';
 import './App.css'
 
+// Parent Component - passes/returns data to child components 
 function App() {
 
   return (
 
-    <div className="App">
+    <body className="App">
 
       <Header />
 
       <main>
 
+        {/* Routes for React Router*/}
         <Routes>
 
           <Route path="/" element={<Home />} />
@@ -30,7 +32,7 @@ function App() {
 
       <Footer />
 
-    </div>
+    </body>
     
   );
 }

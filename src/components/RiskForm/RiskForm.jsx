@@ -1,5 +1,5 @@
 import Risk from '../../classes/risk.js';
-
+// RiskForm Function
 function RiskForm(){
 
     
@@ -11,5 +11,5 @@ function RiskForm(){
 
     );
 }
-
+// Exporting RiskForm
 export default RiskForm;
