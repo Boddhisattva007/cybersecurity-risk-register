@@ -3,9 +3,9 @@ class Risk {
     constructor(
         riskId,
         asset,
-        riskDescription,
+        vulnerability,
         threat,
-        vulnerabilityDescription,
+        description,
         likelihood,
         impact,
         mitigation,
@@ -15,9 +15,9 @@ class Risk {
     ) {
         this.riskId = riskId;
         this.asset = asset;
-        this.riskDescription = riskDescription;
+        this.vulnerability = vulnerability;
         this.threat = threat;
-        this.vulnerabilityDescription = vulnerabilityDescription;
+        this.description = description;
         this.likelihood = likelihood;
         this.impact = impact;
         this.mitigation = mitigation;
