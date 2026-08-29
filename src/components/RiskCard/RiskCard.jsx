@@ -15,11 +15,11 @@ function RiskCard({ risk }){
                 <li>Vulnerability: {risk.vulnerability}</li>
                 <li>Threat: {risk.threat}</li>
                 <li>Description: {risk.description}</li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>Likelihood: {risk.likelihood}</li>
+                <li>Impact Score: {risk.impact}</li>
+                <li>Mitigation: {risk.mitigation}</li>
+                <li>Current Status: {risk.status}</li>
+                <li>Risk Owner: {risk.owner}</li>
 
 
 
@@ -33,11 +33,7 @@ function RiskCard({ risk }){
 
 }
 
-        // riskId,
-        // asset,
-        // riskDescription,
-        // threat,
-        // vulnerabilityDescription,
+
         // likelihood,
         // impact,
         // mitigation,
