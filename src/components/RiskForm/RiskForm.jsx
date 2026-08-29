@@ -6,7 +6,12 @@ function RiskForm(){
 
     return(
 
-        <p>Risk Form Placeholder</p>
+        <section>
+
+            <h2>Risk Input Form</h2>
+
+
+        </section>
 
 
     );

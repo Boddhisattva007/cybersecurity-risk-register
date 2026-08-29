@@ -22,4 +22,4 @@ function riskScoreSeverity(riskScore) {
 
 
 
-export default riskScoreCalculation;
+export default riskScoreCalculation && riskScoreSeverity;
