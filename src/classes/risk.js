@@ -10,9 +10,8 @@ class Risk {
         impact,
         mitigation,
         status,
-        owner,
-        cveId = null, //For v2.0
-        cveData = null //For v2.0
+        owner
+
     ) {
         this.riskId = riskId;
         this.asset = asset;
@@ -24,9 +23,7 @@ class Risk {
         this.mitigation = mitigation;
         this.status = status;
         this.owner = owner;
-        //Saved for eventual use in Version 2.0 (Unit 2 Final... Maybe)
-        this.cveId = cveId;
-        this.cveData = cveData;
+
     }
 }
 // Exporting Risk Object Class
