@@ -1,4 +1,3 @@
-
 import { Routes, Route } from 'react-router';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
@@ -12,7 +11,7 @@ function App() {
 
   return (
 
-    <body className="App">
+    <div className="App">
 
       <Header />
 
@@ -32,7 +31,7 @@ function App() {
 
       <Footer />
 
-    </body>
+    </div>
     
   );
 }
