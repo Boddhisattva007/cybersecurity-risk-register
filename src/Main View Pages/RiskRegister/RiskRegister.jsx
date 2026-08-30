@@ -26,7 +26,7 @@ function RiskRegister() {
 
             <h1>Risk Register</h1>
 
-            {/* Adds a new risk sent to the RiskForm Child Component. */}
+            {/* Passes down addRisk to the RiskForm Child Component. */}
             <RiskForm addRisk={addRisk}/>
 
 
