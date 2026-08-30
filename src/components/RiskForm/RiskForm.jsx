@@ -38,6 +38,128 @@ function RiskForm({ addRisk }){
 
             <h2>Risk Input Form</h2>
 
+            {/* Main Form */}
+            <form>
+
+                {/* Created Form Fields */}
+                
+                <label>
+                    Asset:
+                    <input 
+                    type="text"
+                    name="asset"
+                    value={formData.asset}
+                    onChange={handleChange}
+                    />
+
+                </label>
+
+                <label>
+                    Threat:
+                    <input
+                    type="text"
+                    name="threat"
+                    value={formData.threat}
+                    onChange={handleChange}
+                    />
+
+                </label>
+
+
+                <label>
+                    Vulnerability:
+                    <input
+                    type="text"
+                    name="vulnerability"
+                    value={formData.vulnerability}
+                    onChange={handleChange}
+                    />
+                </label>
+
+                <label>
+                    Risk Description:
+                    <textarea
+                    type="text"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    />
+                </label>
+
+                <label>
+                    Likelihood:
+                    <select
+                    name="likelihood"
+                    value={formData.description}
+                    onChange={handleChange}
+                    >
+                        <option value="">Select Likelihood</option>
+                        <option value="1">Very Low</option>
+                        <option value="2">Low</option>
+                        <option value="3">Medium</option>
+                        <option value="4">High</option>
+                        <option value="5">Very High</option>
+
+                    </select>
+
+                </label>
+
+                <label>
+                    Impact:
+                    <select
+                    name="impact"
+                    value={formData.impact}
+                    onChange={handleChange}
+                    >
+                        <option value="">Select Impact</option>
+                        <option value="1">Level 1 - Minimal</option>
+                        <option value="2">Level 2 - Minor</option>
+                        <option value="3">Level 3 - Moderate</option>
+                        <option value="4">Level 4 - Major</option>
+                        <option value="5">Level 5 - Critical</option>
+                    </select>
+
+                </label>
+
+
+                <label>
+                    Mitigation Strategy:
+                    <textarea
+                    name="mitigation"
+                    type="text"
+                    value={formData.mitigation}
+                    onChange={handleChange}
+                    />
+                </label>
+
+                <label>
+                    Current Status:
+                    <select
+                    name="status"
+                    value={formData.status}
+                    onChange={handleChange}
+                    >
+                        <option value="Open">Open</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+
+                </label>
+
+                <label>
+                    Risk Owner:
+                    <input
+                    type="text"
+                    name="owner"
+                    value={formData.owner}
+                    onChange={handleChange}
+                    />
+                </label>
+
+
+
+
+            </form>
+
 
         </section>
 
