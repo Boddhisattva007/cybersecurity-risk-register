@@ -3,9 +3,9 @@
 function About() {
 
     return (
-        <p>
+        <h1>
             About Page
-        </p>
+        </h1>
     );
 }
 

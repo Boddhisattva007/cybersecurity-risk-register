@@ -1,4 +1,4 @@
-import Risk from "../classes/risk";
+import Risk from "../classes/risk.js";
 
 
 //Instantiating New Risks with mock data.
