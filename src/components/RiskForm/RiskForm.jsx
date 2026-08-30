@@ -18,6 +18,9 @@ function RiskForm({ addRisk, riskNumber }){
 
     })
 
+    // formError variable assigned to store form validation errors.
+    const [formError, setFormError] = useState("");
+
     // Input handler function that updaes the values of the formData object when a user enters new risk information.
     function handleChange(event) {
 
@@ -35,6 +38,24 @@ function RiskForm({ addRisk, riskNumber }){
 
         // Prevents a refresh of the browswer when submit button is pushed.
         event.preventDefault();
+
+        // Input validation checking that all form fields have been entered.
+        if (
+            formData.asset === "" ||
+            formData.threat === "" ||
+            formData.vulnerability === "" ||
+            formData.description === "" ||
+            formData.likelihood === "" ||
+            formData.impact === "" ||
+            formData.mitigation === "" ||
+            formData.owner === "" 
+        ) {
+            setFormError("All fields must be completed.");
+            return;
+        }
+
+        // Clears Error message.
+        setFormError("");
 
         // Turns riskNumber into a string.
         let nextRiskNumber = String(riskNumber);
@@ -69,6 +90,20 @@ function RiskForm({ addRisk, riskNumber }){
         // Adds new risk object to the risks array.
         addRisk(newRisk);
 
+        // Resets formData after Add Risk button is clicked.
+        setFormData({
+            asset: "",
+            threat: "",
+            vulnerability: "",
+            description: "",
+            likelihood: "",
+            impact: "",
+            mitigation: "",
+            status: "Open",
+            owner: ""
+        })
+
+
     }
 
     
@@ -78,6 +113,9 @@ function RiskForm({ addRisk, riskNumber }){
         <section>
 
             <h2>Risk Input Form</h2>
+
+            {/* Conditionally Renders Error Message. */}
+            {formError && <p>{formError}</p>}
 
             {/* Main Form */}
             <form onSubmit={handleSubmit}>
