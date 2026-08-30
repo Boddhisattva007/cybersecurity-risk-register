@@ -2,7 +2,7 @@ import { useState } from "react";
 import Risk from '../../classes/risk.js';
 
 // RiskForm Function
-function RiskForm({ addRisk }){
+function RiskForm({ addRisk, riskNumber }){
 
     // formData variable that stores the users input for a new risk object.
     const [formData, setFormData] = useState({
@@ -30,6 +30,47 @@ function RiskForm({ addRisk }){
 
     }
 
+    // Function that creates and adds a new risk.
+    function handleSubmit(event) {
+
+        // Prevents a refresh of the browswer when submit button is pushed.
+        event.preventDefault();
+
+        // Turns riskNumber into a string.
+        let nextRiskNumber = String(riskNumber);
+        
+        // Conditional statement determining how many leading 0's are needed.
+        if (nextRiskNumber.length === 1) {
+            nextRiskNumber = "00" + nextRiskNumber;
+        } else if (nextRiskNumber.length === 2) {
+            nextRiskNumber = "0" + nextRiskNumber;
+        } else {
+            nextRiskNumber = nextRiskNumber;
+        }
+
+        // Creates new risk ID.
+        const riskId = `Risk-${nextRiskNumber}`;
+
+        // Creates a new risk object from user input.
+        const newRisk = new Risk(
+            riskId,
+            formData.asset,
+            formData.threat,
+            formData.vulnerability,
+            formData.description,
+            Number(formData.likelihood),
+            Number(formData.impact),
+            formData.mitigation,
+            formData.status,
+            formData.owner
+
+        );
+
+        // Adds new risk object to the risks array.
+        addRisk(newRisk);
+
+    }
+
     
 
     return(
@@ -41,8 +82,8 @@ function RiskForm({ addRisk }){
             {/* Main Form */}
             <form>
 
-                {/* Created Form Fields */}
-                
+                {/* Form Fields */}
+
                 <label>
                     Asset:
                     <input 
@@ -90,15 +131,15 @@ function RiskForm({ addRisk }){
                     Likelihood:
                     <select
                     name="likelihood"
-                    value={formData.description}
+                    value={formData.likelihood}
                     onChange={handleChange}
                     >
                         <option value="">Select Likelihood</option>
-                        <option value="1">Very Low</option>
-                        <option value="2">Low</option>
-                        <option value="3">Medium</option>
-                        <option value="4">High</option>
-                        <option value="5">Very High</option>
+                        <option value="1">1 - Very Low</option>
+                        <option value="2">2 - Low</option>
+                        <option value="3">3 - Medium</option>
+                        <option value="4">4 - High</option>
+                        <option value="5">5 - Very High</option>
 
                     </select>
 
@@ -155,11 +196,7 @@ function RiskForm({ addRisk }){
                     />
                 </label>
 
-
-
-
             </form>
-
 
         </section>
 
