@@ -49,7 +49,7 @@ function RiskForm({ addRisk, riskNumber }){
         }
 
         // Creates new risk ID.
-        const riskId = `Risk-${nextRiskNumber}`;
+        const riskId = `RISK-${nextRiskNumber}`;
 
         // Creates a new risk object from user input.
         const newRisk = new Risk(
@@ -80,7 +80,7 @@ function RiskForm({ addRisk, riskNumber }){
             <h2>Risk Input Form</h2>
 
             {/* Main Form */}
-            <form>
+            <form onSubmit={handleSubmit}>
 
                 {/* Form Fields */}
 
@@ -195,6 +195,8 @@ function RiskForm({ addRisk, riskNumber }){
                     onChange={handleChange}
                     />
                 </label>
+
+                <button type="submit">Add Risk</button>
 
             </form>
 
