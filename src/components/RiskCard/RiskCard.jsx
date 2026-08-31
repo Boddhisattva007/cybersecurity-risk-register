@@ -1,10 +1,15 @@
 import {riskScoreCalculation, riskScoreSeverity} from "../../utilities/riskCalculations.js";
 
 //Risk Card function
-function RiskCard({ risk }){
+function RiskCard({ risk, deleteRisk }){
 
     const riskScore = riskScoreCalculation(risk.likelihood, risk.impact);
     const severity = riskScoreSeverity(riskScore);
+
+    // Delete risk handler function.
+    function handleDeleteRisk(){
+        deleteRisk(risk.riskId);
+    }
 
     return(
 
@@ -31,6 +36,9 @@ function RiskCard({ risk }){
                 <br />
                 Risk Severity: {severity}
             </h4>
+
+            {/* Delete Risk Button */}
+            <button type="button" onClick={handleDeleteRisk}>Delete </button>
 
         </section>
 

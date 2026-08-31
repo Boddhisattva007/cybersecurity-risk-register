@@ -21,6 +21,13 @@ function RiskRegister() {
 
     }
 
+    // Function to delete a risk object.
+    // Filters every risk object by riskId and creates a new array 
+    // where only the risks not being deleted remain.
+    function deleteRisk(riskId) {
+        setRisks(risks.filter((risk) => risk.riskId !== riskId));
+    }
+
     // Parent that passes/returns data to:
     // RiskForm, RiskList, & RiskSummary child components.
     // Also a Child to App.jsx, eturns the Risk Register element.
@@ -34,8 +41,9 @@ function RiskRegister() {
             <RiskForm addRisk={addRisk} riskNumber={riskNumber}/>
 
 
-            {/* Passes mock risk data down as props to RiskList Child Component & renders RiskList element. */}
-            <RiskList risks={risks} /> 
+            {/* Passes mock risk data down as a prop to RiskList Child Component & renders RiskList element.
+            Also passes deleteRisk fucntion down to RiskList.jsx as a prop. */}
+            <RiskList risks={risks} deleteRisk={(deleteRisk)} /> 
 
 
             <RiskSummary risks={risks} />
