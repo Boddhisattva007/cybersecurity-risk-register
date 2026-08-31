@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {riskScoreCalculation, riskScoreSeverity} from "../../utilities/riskCalculations.js";
 import RiskForm from "../../components/RiskForm/RiskForm.jsx";
 import RiskList from "../../components/RiskList/RiskList.jsx";
 import RiskSummary from "../../components/RiskSummary/RiskSummary.jsx";
@@ -12,6 +13,9 @@ function RiskRegister() {
 
     // Sets new Risk number.
     const [riskNumber, setRiskNumber] = useState(mockDataArray.length + 1);
+
+    // Sets the currently selected severity filter to "All" as the default state.
+    const [severityFilter, setSeverityFilter] = useState("All");
 
     // Function to add a new risk object using the spread operator by updating the 
     // React state with a new array, with the new risk added at the end.
@@ -45,6 +49,34 @@ function RiskRegister() {
 
     }
 
+    // Updates severityFilter to user selection.
+    function handleSeverityFilterChange(event) {
+        setSeverityFilter(event.target.value);
+
+    }
+
+    // Initializes filteredRisks variable to all risks in the risks array.
+    let filteredRisks = risks;
+
+    // Conditional if statement runs if the user selects a severity level other than "All".
+    if(severityFilter !== "All") {
+        // Filters through the risks array...
+        filteredRisks = risks.filter((risk) => {
+
+            // Calculates the riskScore with the riskScoreCalculation function and store it in the locacl variable riskScore.
+            const riskScore = riskScoreCalculation(risk.likelihood, risk.impact);
+
+            // Uses the riskScore calculation to determine level of severity with the riskScoreSeverity function.
+            // Then stores it in the local severity variable.
+            const severity = riskScoreSeverity(riskScore);
+
+            // Takes the severity string returned by the riskScoreSeverity function and compares it to the user selected
+            // severity level, if they match it returns true. If true, the new array contains only those risks.
+            return severity === severityFilter;
+            
+        });
+    }
+
     // Parent that passes/returns data to:
     // RiskForm, RiskList, & RiskSummary child components.
     // Also a Child to App.jsx, eturns the Risk Register element.
@@ -57,10 +89,29 @@ function RiskRegister() {
             {/* Passes down addRisk function to the RiskForm Child Component. */}
             <RiskForm addRisk={addRisk} riskNumber={riskNumber}/>
 
+            <h2>Filter Risks</h2>
+
+            <label>
+                Filter by Severity:
+                <br />
+                <select
+                value={severityFilter}
+                onChange={handleSeverityFilterChange}
+                >
+                    <option value="All">All Severity Levels</option>
+                    <option value="Low">Low</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="High">High</option>
+                    <option value="Critical">Critical</option>
+
+                </select>
+
+            </label>
+
 
             {/* Passes mock risk data down as a prop to RiskList Child Component & renders RiskList element.
             Also passes deleteRisk fucntion down to RiskList.jsx as a prop. */}
-            <RiskList risks={risks} deleteRisk={(deleteRisk)} editRisk={editRisk} /> 
+            <RiskList risks={filteredRisks} deleteRisk={(deleteRisk)} editRisk={editRisk} /> 
 
 
             <RiskSummary risks={risks} />
