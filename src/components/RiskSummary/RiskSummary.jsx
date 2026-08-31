@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 //Risk Summary Function
-function RiskSummary() {
+function RiskSummary({ risks }) {
+    const totalRisks = risks.length;
+    
+
+
+
     return(
 
         <section>

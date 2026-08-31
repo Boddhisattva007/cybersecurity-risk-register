@@ -28,6 +28,23 @@ function RiskRegister() {
         setRisks(risks.filter((risk) => risk.riskId !== riskId));
     }
 
+    // Function that allows the user to edit a risk after being submitted.
+    function editRisk(updatedRisk){
+
+        // Uses .map to return a new array with the updated risk object.
+        setRisks(risks.map((risk) => {
+
+            // Conditional statement to return either the edited/updated risk object or not.
+            if (risk.riskId === updatedRisk.riskId){
+                return updatedRisk;
+            } else {
+                return risk;
+            }
+        
+        }));
+
+    }
+
     // Parent that passes/returns data to:
     // RiskForm, RiskList, & RiskSummary child components.
     // Also a Child to App.jsx, eturns the Risk Register element.
@@ -43,7 +60,7 @@ function RiskRegister() {
 
             {/* Passes mock risk data down as a prop to RiskList Child Component & renders RiskList element.
             Also passes deleteRisk fucntion down to RiskList.jsx as a prop. */}
-            <RiskList risks={risks} deleteRisk={(deleteRisk)} /> 
+            <RiskList risks={risks} deleteRisk={(deleteRisk)} editRisk={editRisk} /> 
 
 
             <RiskSummary risks={risks} />

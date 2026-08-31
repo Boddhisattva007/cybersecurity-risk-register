@@ -1,7 +1,7 @@
 import RiskCard from "../RiskCard/RiskCard.jsx";
 
 // RiskList Function
-function RiskList({ risks, deleteRisk }){
+function RiskList({ risks, deleteRisk, editRisk }){
 
     return(
         
@@ -18,6 +18,7 @@ function RiskList({ risks, deleteRisk }){
                 key={risk.riskId} 
                 risk={risk}
                 deleteRisk={deleteRisk}
+                editRisk={editRisk}
                 />
             ))}
 

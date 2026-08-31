@@ -1,14 +1,98 @@
+import { useState } from "react";
+import Risk from '../../classes/risk.js';
 import {riskScoreCalculation, riskScoreSeverity} from "../../utilities/riskCalculations.js";
 
 //Risk Card function
-function RiskCard({ risk, deleteRisk }){
+function RiskCard({ risk, deleteRisk, editRisk }){
 
+    // Variable that holds editing state as a boolean.
+    const [isEditing, setIsEditing] = useState(false);
+
+    // Variables assigned to riskScoreCalculation and the riskScoreSeverity
     const riskScore = riskScoreCalculation(risk.likelihood, risk.impact);
     const severity = riskScoreSeverity(riskScore);
+
+    // Variable that stores the field information while editing.
+    const [editedFormData, setEditedFormData] = useState({
+        asset: risk.asset,
+        threat: risk.threat,
+        vulnerability: risk.vulnerability,
+        description: risk.description,
+        likelihood: risk.likelihood,
+        impact: risk.impact,
+        mitigation: risk.mitigation,
+        status: risk.status,
+        owner: risk.owner
+
+    });
 
     // Delete risk handler function.
     function handleDeleteRisk(){
         deleteRisk(risk.riskId);
+    }
+
+    // Edit risk handler function.
+    function handleEditRisk() {
+        setIsEditing(true);
+    }
+
+
+    // Input handler function that updaes the values of the formData object when a user enters edits risk information.
+    function handleEditChange(event) {
+
+        // Gets the name and value from the edited form field with the information entered by the user.
+        const { name, value } = event.target;
+
+        // Sets the editedFormData with the changes made by the user.
+        setEditedFormData({...editedFormData, [name]: value});
+
+    }
+
+    // Handler function that creates an updated risk object and allows the user to either "save" or "cancel" their edits.
+    function handleEditSubmit(event) {
+
+        event.preventDefault()
+
+        // Creates the updated risk object with the field changes entered by the user. 
+        const updatedRisk = new Risk(
+            risk.riskId,
+            editedFormData.asset,
+            editedFormData.threat,
+            editedFormData.vulnerability,
+            editedFormData.description,
+            Number(editedFormData.likelihood),
+            Number(editedFormData.impact),
+            editedFormData.mitigation,
+            editedFormData.status,
+            editedFormData.owner
+        );
+
+        //Passes updatedRisk to the RiskRegister.
+        editRisk(updatedRisk);
+
+        // Sets isEditing back to false to exit the Edit function.
+        setIsEditing(false);
+    }
+
+    // Hanlder function that allows the user to cancel their edits and keeps original formData.
+    function handleCancelEdit(event) {
+
+        setEditedFormData({
+
+            asset: risk.asset,
+            threat: risk.threat,
+            vulnerability: risk.vulnerability,
+            description: risk.description,
+            likelihood: risk.likelihood,
+            impact: risk.impact,
+            mitigation: risk.mitigation,
+            status: risk.status,
+            owner: risk.owner
+
+        });
+
+        setIsEditing(false);
+
     }
 
     return(
@@ -18,27 +102,199 @@ function RiskCard({ risk, deleteRisk }){
             {/* Displays each "Risk Card" using riskId as the tertiary heading. */}
             <h3>{risk.riskId}</h3>
 
-            {/* List items for each key/value pair associated with each risk card. */}
-            <ul>
-                <li>Asset: {risk.asset}</li>
-                <li>Threat: {risk.threat}</li>
-                <li>Vulnerability: {risk.vulnerability}</li>
-                <li>Description: {risk.description}</li>
-                <li>Likelihood: {risk.likelihood}</li>
-                <li>Impact Score: {risk.impact}</li>
-                <li>Mitigation: {risk.mitigation}</li>
-                <li>Current Status: {risk.status}</li>
-                <li>Risk Owner: {risk.owner}</li>
-            </ul>
+            {/* Conditional ternary statement to determine if in Editing mode or not 
+            based on the boolean value of isEditing. */}
+            {isEditing ? (
 
-            <h4>
-                Risk Score: {riskScore}
-                <br />
-                Risk Severity: {severity}
-            </h4>
+                // If isEditing is boolean true, render this on the page.
+                <form onSubmit={handleEditSubmit}>
 
-            {/* Delete Risk Button */}
-            <button type="button" onClick={handleDeleteRisk}>Delete </button>
+                    <label>
+                        Asset:
+                        <br />
+                        <input
+                        type="text"
+                        name="asset"
+                        value={editedFormData.asset}
+                        onChange={handleEditChange}
+                        />
+
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Threat:
+                        <br />
+                        <input
+                        type="text"
+                        name="threat"
+                        value={editedFormData.threat}
+                        onChange={handleEditChange}
+                        />
+
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Vulnerability:
+                        <br />
+                        <input
+                        type="text"
+                        name="vulnerability"
+                        value={editedFormData.vulnerability}
+                        onChange={handleEditChange}
+                        />
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Risk Description:
+                        <br />
+                        <textarea
+                        type="text"
+                        name="description"
+                        value={editedFormData.description}
+                        onChange={handleEditChange}
+                        />
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Likelihood:
+                        <br />
+                        <select
+                        name="likelihood"
+                        value={editedFormData.likelihood}
+                        onChange={handleEditChange}
+                        >
+                            <option value="1">1 - Very Low</option>
+                            <option value="2">2 - Low</option>
+                            <option value="3">3 - Medium</option>
+                            <option value="4">4 - High</option>
+                            <option value="5">5 - Very High</option>
+
+                        </select>
+
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Impact:
+                        <br />
+                        <select
+                        name="impact"
+                        value={editedFormData.impact}
+                        onChange={handleEditChange}
+                        >
+                            <option value="1">Level 1 - Minimal</option>
+                            <option value="2">Level 2 - Minor</option>
+                            <option value="3">Level 3 - Moderate</option>
+                            <option value="4">Level 4 - Major</option>
+                            <option value="5">Level 5 - Critical</option>
+                        </select>
+
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Mitigation Strategy:
+                        <br />
+                        <textarea
+                        name="mitigation"
+                        type="text"
+                        value={editedFormData.mitigation}
+                        onChange={handleEditChange}
+                        />
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Current Status:
+                        <br />
+                        <select
+                        name="status"
+                        value={editedFormData.status}
+                        onChange={handleEditChange}
+                        >
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+
+                    </label>
+
+                    <br />
+                    <br />
+
+                    <label>
+                        Risk Owner:
+                        <br />
+                        <input
+                        type="text"
+                        name="owner"
+                        value={editedFormData.owner}
+                        onChange={handleEditChange}
+                        />
+                    </label>
+
+                    <br />
+                    <br />
+
+                    {/* Save Changes Button */}
+                    <button type="submit">Save Changes</button>
+
+                    {/* Cancel Button */}
+                    <button type="button" onClick={handleCancelEdit}>Cancel</button>
+
+                </form>
+
+            ) : (
+
+                // If isEditing is boolean false, render this on the page.
+                <div>
+
+                    {/* List items for each key/value pair associated with each risk card. */}
+                    <ul>
+                        <li>Asset: {risk.asset}</li>
+                        <li>Threat: {risk.threat}</li>
+                        <li>Vulnerability: {risk.vulnerability}</li>
+                        <li>Description: {risk.description}</li>
+                        <li>Likelihood: {risk.likelihood}</li>
+                        <li>Impact Score: {risk.impact}</li>
+                        <li>Mitigation: {risk.mitigation}</li>
+                        <li>Current Status: {risk.status}</li>
+                        <li>Risk Owner: {risk.owner}</li>
+                    </ul>
+
+                    <h4>
+                        Risk Score: {riskScore}
+                        <br />
+                        Risk Severity: {severity}
+                    </h4>
+
+                    {/* Edit Button */}
+                    <button type="button" onClick={handleEditRisk}>Edit</button>
+
+                    {/* Delete Button */}
+                    <button type="button" onClick={handleDeleteRisk}>Delete</button>
+
+                </div>
+
+            )}
+
 
         </section>
 

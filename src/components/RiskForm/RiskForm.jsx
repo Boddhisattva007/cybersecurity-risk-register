@@ -50,7 +50,7 @@ function RiskForm({ addRisk, riskNumber }){
             formData.mitigation === "" ||
             formData.owner === "" 
         ) {
-            setFormError("All fields must be completed.");
+            setFormError("ERROR: All fields must be completed.");
             return;
         }
 
@@ -124,6 +124,7 @@ function RiskForm({ addRisk, riskNumber }){
 
                 <label>
                     Asset:
+                    <br />
                     <input 
                     type="text"
                     name="asset"
@@ -133,8 +134,12 @@ function RiskForm({ addRisk, riskNumber }){
 
                 </label>
 
+                <br />
+                <br />
+
                 <label>
                     Threat:
+                    <br />
                     <input
                     type="text"
                     name="threat"
@@ -144,9 +149,12 @@ function RiskForm({ addRisk, riskNumber }){
 
                 </label>
 
+                <br />
+                <br />
 
                 <label>
                     Vulnerability:
+                    <br />
                     <input
                     type="text"
                     name="vulnerability"
@@ -155,8 +163,12 @@ function RiskForm({ addRisk, riskNumber }){
                     />
                 </label>
 
+                <br />
+                <br />
+
                 <label>
                     Risk Description:
+                    <br />
                     <textarea
                     type="text"
                     name="description"
@@ -165,8 +177,12 @@ function RiskForm({ addRisk, riskNumber }){
                     />
                 </label>
 
+                <br />
+                <br />
+
                 <label>
                     Likelihood:
+                    <br />
                     <select
                     name="likelihood"
                     value={formData.likelihood}
@@ -183,8 +199,12 @@ function RiskForm({ addRisk, riskNumber }){
 
                 </label>
 
+                <br />
+                <br />
+
                 <label>
                     Impact:
+                    <br />
                     <select
                     name="impact"
                     value={formData.impact}
@@ -200,9 +220,12 @@ function RiskForm({ addRisk, riskNumber }){
 
                 </label>
 
+                <br />
+                <br />
 
                 <label>
                     Mitigation Strategy:
+                    <br />
                     <textarea
                     name="mitigation"
                     type="text"
@@ -211,21 +234,13 @@ function RiskForm({ addRisk, riskNumber }){
                     />
                 </label>
 
-                <label>
-                    Current Status:
-                    <select
-                    name="status"
-                    value={formData.status}
-                    onChange={handleChange}
-                    >
-                        <option value="Open">Open</option>
-                        <option value="Closed">Closed</option>
-                    </select>
+                <br />
 
-                </label>
+                <br />
 
                 <label>
                     Risk Owner:
+                    <br />
                     <input
                     type="text"
                     name="owner"
@@ -234,6 +249,10 @@ function RiskForm({ addRisk, riskNumber }){
                     />
                 </label>
 
+                <br />
+                <br />
+
+                {/* Add Risk Button */}
                 <button type="submit">Add Risk</button>
 
             </form>
