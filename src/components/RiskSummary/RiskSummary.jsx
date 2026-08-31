@@ -2,8 +2,9 @@ import { useState } from "react";
 
 //Risk Summary Function
 function RiskSummary({ risks }) {
+    //Takes risks array length and assigns it to totalRisks variable.
     const totalRisks = risks.length;
-    
+
 
 
 
@@ -11,6 +12,8 @@ function RiskSummary({ risks }) {
 
         <section>
             <h2>Risk Summary</h2>
+
+            <p>Total Risks: {totalRisks}</p>
 
 
         </section>
