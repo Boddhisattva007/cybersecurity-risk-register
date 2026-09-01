@@ -9,6 +9,9 @@ function RiskCard({ risk, deleteRisk, editRisk }){
     // Variable that holds editing state as a boolean.
     const [isEditing, setIsEditing] = useState(false);
 
+    // Variable that holds blank field validation errors for the risk form.
+    const [editFormError, setEditFormError] = useState("");
+
     // Variables assigned to riskScoreCalculation and the riskScoreSeverity
     const riskScore = riskScoreCalculation(risk.likelihood, risk.impact);
     const severity = riskScoreSeverity(riskScore);
@@ -54,6 +57,29 @@ function RiskCard({ risk, deleteRisk, editRisk }){
 
         event.preventDefault()
 
+        // Conditional if statement that checks to see if all form fields have been completed.
+        if (
+            editedFormData.asset === "" ||
+            editedFormData.threat === "" ||
+            editedFormData.vulnerability === "" ||
+            editedFormData.description === "" ||
+            editedFormData.likelihood === "" ||
+            editedFormData.impact === "" ||
+            editedFormData.mitigation === "" ||
+            editedFormData.status === "" ||
+            editedFormData.owner === ""
+        ){
+
+            setEditFormError("ERROR: All fields must be completed.");
+
+            // Exits if statement. 
+            return;
+
+        }
+
+        // Sets the error message back to an empty string after successful input validation.
+        setEditFormError("");
+
         // Creates the updated risk object with the field changes entered by the user. 
         const updatedRisk = new Risk(
             risk.riskId,
@@ -68,11 +94,13 @@ function RiskCard({ risk, deleteRisk, editRisk }){
             editedFormData.owner
         );
 
-        //Passes updatedRisk to the RiskRegister.
+        //Passes updatedRisk to editRisk function in the RiskRegister.
         editRisk(updatedRisk);
 
-        // Sets isEditing back to false to exit the Edit function.
+        // Sets isEditing back to false.
         setIsEditing(false);
+
+
     }
 
     // Hanlder function that allows the user to cancel their edits and keeps original formData.
@@ -92,6 +120,10 @@ function RiskCard({ risk, deleteRisk, editRisk }){
 
         });
 
+        // If "Cancel" button is clicked, this resets the editFormError message back to an empty string.
+        setEditFormError("");
+
+        // Sets isEditing back to false.
         setIsEditing(false);
 
     }
@@ -109,6 +141,9 @@ function RiskCard({ risk, deleteRisk, editRisk }){
 
                 // If isEditing is boolean true, render this on the page.
                 <form onSubmit={handleEditSubmit}>
+
+                    {/* Renders editFormError message to the page. */}
+                    {editFormError && <p>{editFormError}</p>}
 
                     <label>
                         Asset:
