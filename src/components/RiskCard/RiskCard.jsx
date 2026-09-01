@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Risk from '../../classes/risk.js';
 import {riskScoreCalculation, riskScoreSeverity} from "../../utilities/riskCalculations.js";
+import Risk from '../../classes/risk.js';
+import Button from "../../components/Button/Button.jsx";
 
 //Risk Card function
 function RiskCard({ risk, deleteRisk, editRisk }){
@@ -254,10 +255,10 @@ function RiskCard({ risk, deleteRisk, editRisk }){
                     <br />
 
                     {/* Save Changes Button */}
-                    <button type="submit">Save Changes</button>
+                    <Button type="submit" buttonText="Save"/>
 
                     {/* Cancel Button */}
-                    <button type="button" onClick={handleCancelEdit}>Cancel</button>
+                    <Button type="button" buttonText={"Cancel"} onClick={handleCancelEdit}/>
 
                 </form>
 
@@ -286,10 +287,10 @@ function RiskCard({ risk, deleteRisk, editRisk }){
                     </h4>
 
                     {/* Edit Button */}
-                    <button type="button" onClick={handleEditRisk}>Edit</button>
+                    <Button type="button" buttonText="Edit" onClick={handleEditRisk}/>
 
                     {/* Delete Button */}
-                    <button type="button" onClick={handleDeleteRisk}>Delete</button>
+                    <Button type="button" buttonText="Delete" onClick={handleDeleteRisk}/>
 
                 </div>
 

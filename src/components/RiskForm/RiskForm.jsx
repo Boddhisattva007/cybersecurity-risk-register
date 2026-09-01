@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Risk from '../../classes/risk.js';
+import Button from "../../components/Button/Button.jsx";
 
 // RiskForm Function
 function RiskForm({ addRisk, riskNumber }){
@@ -253,7 +254,7 @@ function RiskForm({ addRisk, riskNumber }){
                 <br />
 
                 {/* Add Risk Button */}
-                <button type="submit">Add Risk</button>
+                <Button type="submit" buttonText="Add Risk" />
 
             </form>
 

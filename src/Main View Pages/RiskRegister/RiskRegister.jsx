@@ -4,6 +4,7 @@ import RiskForm from "../../components/RiskForm/RiskForm.jsx";
 import RiskList from "../../components/RiskList/RiskList.jsx";
 import RiskSummary from "../../components/RiskSummary/RiskSummary.jsx";
 import mockDataArray from "../../data/mockRiskData.js";
+import Button from "../../components/Button/Button.jsx";
 
 // Risk Register Function
 function RiskRegister() {
@@ -16,6 +17,9 @@ function RiskRegister() {
 
     // Sets the currently selected severity filter to "All" as the default state.
     const [severityFilter, setSeverityFilter] = useState("All");
+
+    // Sets the currently selected status filter to "All" as the default state.
+    const [statusFilter, setStatusFilter] = useState("All");
 
     // Function to add a new risk object using the spread operator by updating the 
     // React state with a new array, with the new risk added at the end.
@@ -77,6 +81,23 @@ function RiskRegister() {
         });
     }
 
+    // Updates statusFilter to user selection.
+    function handleStatusFilterChange(event) {
+        setStatusFilter(event.target.value);
+
+    }
+
+    // Conditional if statement that filters the pre filtered risks by status when specific status is selected by user.
+    if (statusFilter !== "All") {
+        // Filters through the risks array...
+        filteredRisks = filteredRisks.filter((risk) => {
+            // For every risk, compare the status to the user selected status and return true or false.
+            return risk.status === statusFilter;
+
+        });
+
+    }
+
     // Parent that passes/returns data to:
     // RiskForm, RiskList, & RiskSummary child components.
     // Also a Child to App.jsx, eturns the Risk Register element.
@@ -98,7 +119,7 @@ function RiskRegister() {
                 value={severityFilter}
                 onChange={handleSeverityFilterChange}
                 >
-                    <option value="All">All Severity Levels</option>
+                    <option value="All">--</option>
                     <option value="Low">Low</option>
                     <option value="Moderate">Moderate</option>
                     <option value="High">High</option>
@@ -108,6 +129,22 @@ function RiskRegister() {
 
             </label>
 
+            <br />
+            <br />
+
+            <label>
+                Filter by Status:
+                <br />
+                <select
+                value={statusFilter}
+                onChange={handleStatusFilterChange}
+                >
+                    <option value="All">--</option>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                </select>
+
+            </label>
 
             {/* Passes mock risk data down as a prop to RiskList Child Component & renders RiskList element.
             Also passes deleteRisk fucntion down to RiskList.jsx as a prop. */}
