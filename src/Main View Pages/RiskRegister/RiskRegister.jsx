@@ -4,7 +4,6 @@ import RiskForm from "../../components/RiskForm/RiskForm.jsx";
 import RiskList from "../../components/RiskList/RiskList.jsx";
 import RiskSummary from "../../components/RiskSummary/RiskSummary.jsx";
 import mockDataArray from "../../data/mockRiskData.js";
-import Button from "../../components/Button/Button.jsx";
 
 // Risk Register Function
 function RiskRegister() {
@@ -105,12 +104,12 @@ function RiskRegister() {
 
         <section>
 
-            <h1>Risk Register</h1>
+            <h1 className="risk-reg-heading">Risk Register</h1>
 
             {/* Passes down addRisk function to the RiskForm Child Component. */}
             <RiskForm addRisk={addRisk} riskNumber={riskNumber}/>
 
-            <h2>Filter Risks</h2>
+            <h2 className="filter-risks-heading">Filter Risks</h2>
 
             <label>
                 Filter by Severity:

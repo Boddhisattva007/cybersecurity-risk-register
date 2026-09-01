@@ -5,7 +5,7 @@ function Header() {
     return (
 
         <header>
-            <h1>Cybersecurity Risk Register</h1>
+            <h4>Cybersecurity Risk Register</h4>
 
             <nav>
                 <ul>

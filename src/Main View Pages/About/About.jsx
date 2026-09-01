@@ -1,20 +1,23 @@
-
+import riskMatrixImage from "../../assets/Cyber Security Risk Matrix.png"
 // About Page Function
 function About() {
 
     return (
 
-        <div>
-            <h1>About Page</h1>
+        <section className="about-page">
 
-            <h2>Risk Assesment</h2>
+            <h1>About</h1>
 
-            <p>Likelihood x Impact = Risk Score = Severity</p>
+            <h2>The Risk Assesment</h2>
 
             <p>
                 Each risk is assigned a likelihood and impact by the user. These values
                 are used to calculate a risk score and determine the overall risk severity.
             </p>
+
+            <img src={riskMatrixImage} alt="5 x 5 cybersecurity risk matrix showing likelihood, impact, and severity levels"/>
+
+            <p>Likelihood x Impact = Risk Score = Severity</p>
 
             <h2>Risk Severity</h2>
 
@@ -54,7 +57,7 @@ function About() {
                     </tr>
 
                 </tbody>
-                
+
 
             </table>
 
@@ -70,7 +73,7 @@ function About() {
 
             </ul>
 
-        </div>
+        </section>
     );
 }
 

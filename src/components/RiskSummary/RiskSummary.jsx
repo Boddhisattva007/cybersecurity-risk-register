@@ -30,21 +30,13 @@ function RiskSummary({ risks }) {
             
         // Conditional if statement block that separates the risk items/cards by severity level.
         if (severity === "Low") {
-
             lowRisks = lowRisks + 1;
-
         } else if (severity === "Moderate") {
-
             moderateRisks = moderateRisks + 1;
-
         } else if (severity === "High") {
-
             highRisks = highRisks + 1;
-
         } else if (severity === "Critical") {
-
             criticalRisks = criticalRisks + 1;
-
         }
 
     });
@@ -54,7 +46,7 @@ function RiskSummary({ risks }) {
 
         <section>
 
-            <h2>Risk Summary</h2>
+            <h2 className="risk-sum">Risk Summary</h2>
 
             <p>Total Risks: {totalRisks}</p>
             <p>Open Risks: {openRisks}</p>

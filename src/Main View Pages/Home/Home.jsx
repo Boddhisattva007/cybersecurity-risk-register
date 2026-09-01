@@ -1,12 +1,21 @@
+import { Link } from "react-router";
+
 // Home Page Function
 function Home() {
 
     return (
-        <section>
+        <section className="home-page">
 
-            <h1>Home Page</h1>
+            <div className="home-intro">
 
-            <p>A simple way to identify, assess, and manage cybersecurity risks.</p>
+                <h1>CYBERSECURITY RISK REGISTER</h1>
+
+                <p>A simple way to identify, assess, and manage cybersecurity risks.</p>
+
+                <Link className="home-button" to="/riskregister">Risk Register</Link>
+
+            </div>
+
 
             <p>How It Works</p>
 

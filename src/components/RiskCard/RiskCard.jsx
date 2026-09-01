@@ -129,11 +129,12 @@ function RiskCard({ risk, deleteRisk, editRisk }){
     }
 
     return(
+        
 
-        <section>
+        <section className="risk-card">
 
             {/* Displays each "Risk Card" using riskId as the tertiary heading. */}
-            <h3>{risk.riskId}</h3>
+            <h3 className="risk-id">{risk.riskId}</h3>
 
             {/* Conditional ternary statement to determine if in Editing mode or not 
             based on the boolean value of isEditing. */}
