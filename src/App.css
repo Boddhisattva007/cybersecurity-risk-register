@@ -39,19 +39,6 @@
   margin-top: 0;
 }
 
-.home-button {
-  display: inline-block;
-  background-color: #000000;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 8px 12px;
-  margin-top: 10px;
-}
-
-.home-button:hover {
-  background-color: #e5e5e5;
-  color: #000000;
-}
 
 .home-page ol {
   display: inline-block;
@@ -113,6 +100,33 @@ main {
 
 }
 
+.about-heading {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #000000;
+
+}
+
+.risk-severity-heading {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #000000;
+
+}
+
+.app-feat-heading {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #000000;
+
+}
+
 /* Risk Cards */
 .risk-card {
   width: 100%;
@@ -131,6 +145,14 @@ main {
   border-bottom: 2px solid #000000;
 }
 
+@media (max-width: 650px) {
+
+  .risk-card {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+}
 
 /* Header */
 header {
@@ -148,6 +170,7 @@ header h4 {
 
   
 }
+
 
 /* Navigation Links */
 
@@ -223,12 +246,13 @@ button:hover {
 /* About Page */
 
 .about-page table {
-  margin: 20px auto;
+  margin: 20px 0;
 }
 
 .about-page ul {
   display: inline-block;
   text-align: left;
+  
 }
 
 /* About Table */

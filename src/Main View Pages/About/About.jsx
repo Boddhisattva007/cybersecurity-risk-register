@@ -6,7 +6,7 @@ function About() {
 
         <section className="about-page">
 
-            <h1>About</h1>
+            <h1 className="about-heading">About</h1>
 
             <h2>The Risk Assesment</h2>
 
@@ -17,9 +17,9 @@ function About() {
 
             <img src={riskMatrixImage} alt="5 x 5 cybersecurity risk matrix showing likelihood, impact, and severity levels"/>
 
-            <p>Likelihood x Impact = Risk Score = Severity</p>
+            <p style={{ textAlign: "center", fontWeight: "bold" }}>Likelihood x Impact = Risk Score = Severity</p>
 
-            <h2>Risk Severity</h2>
+            <h2 className="risk-severity-heading">Risk Severity</h2>
 
 
             <table>
@@ -62,7 +62,7 @@ function About() {
             </table>
 
 
-            <h2>Application Features</h2>
+            <h2 className="app-feat-heading">Application Features</h2>
 
             <ul>
                 <li>Add Risks</li>
